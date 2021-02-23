@@ -24,6 +24,7 @@ Rails.application.configure do
   else
     config.action_controller.perform_caching = false
 
+
     config.cache_store = :null_store
   end
 
@@ -35,6 +36,9 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  if (host = ENV["GITPOD_WORKSPACE_URL"].presence || ENV["APP_DOMAIN"].presence)
+    config.hosts << "3000-aquamarine-lemming-o79766cp.ws-eu03.gitpod.io"
+  end
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
